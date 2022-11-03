@@ -20,10 +20,9 @@ import java.util.Date;
 
 public class DoseDetailActivity extends AppCompatActivity {
 
-    private EditText titleEditText, descEditText;
-    private Button deleteButton;
+    private EditText titleEditText, descEditText,  tvDisplayTime;
+    private Button deleteButton, buttonChangeTime;
     private Dose selectedDose;
-    private TextView tvDisplayTime;
     private TimePicker timePickerl;
 
     private int hour;
@@ -43,20 +42,9 @@ public class DoseDetailActivity extends AppCompatActivity {
 
     }
 
-    private void addListenerOnButton() {
-        Button buttonChangeTime = (Button) findViewById(R.id.buttonChangeTime);
-        buttonChangeTime.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //noinspection deprecation
-                showDialog(TIME_DIALOG_ID);
-            }
-        });
-    }
-
     // display current time
     public void setCurrentTimeOnView() {
-        tvDisplayTime = (TextView) findViewById(R.id.tvTime);
+        tvDisplayTime = (EditText) findViewById(R.id.tvTime);
         timePickerl = (TimePicker) findViewById(R.id.timePickerl);
 
         final Calendar c = Calendar.getInstance();
@@ -73,7 +61,17 @@ public class DoseDetailActivity extends AppCompatActivity {
         timePickerl.setMinute(minute);
     }
 
-    @SuppressWarnings("deprecation")
+    private void addListenerOnButton() {
+        Button buttonChangeTime = (Button) findViewById(R.id.buttonChangeTime);
+        buttonChangeTime.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                showDialog(TIME_DIALOG_ID);
+            }
+        });
+    }
+
     @Override
     protected Dialog onCreateDialog(int id) {
         switch (id) {
@@ -109,7 +107,7 @@ public class DoseDetailActivity extends AppCompatActivity {
     }
 
     private void initWidgets() {
-        titleEditText = findViewById(R.id.titleEditText);
+        titleEditText = findViewById(R.id.tvTime);
         descEditText = findViewById(R.id.descriptionEditText);
         deleteButton = findViewById(R.id.deleteDoseButton);
     }
