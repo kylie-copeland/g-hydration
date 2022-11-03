@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">GhydrationApp</string>
+    <string name="dateTime" formatted="true" >HH:MM</string>
+</resources>
